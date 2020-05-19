@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="logo">Submit Report</div>
+    <p class="instructions">Enter your report here. </p>
+    <div class="login-item">
+      
+        <form #myform="ngForm" (ngSubmit)="submit(myform)" class="form form-login">
+
+
+
+            <textarea minlength="5" class="textarea" rows="20" cols="50" id="reporttext" required [(ngModel)]="reporttext" name="reporttext"
+                #mailtextvalidityMsg="ngModel">Hi there</textarea>
+
+
+            <div class="form-field">
+                <input [disabled]="!myform.valid" type="submit" value="Submit">
+            </div>
+            <a class="link" routerLink="/home" routerLinkActive="active">
+                <div class="form-field">
+                    <button class="button"> Back to Home</button>
+                </div>
+            </a>
+            
+        </form>
+    </div>
+</div>

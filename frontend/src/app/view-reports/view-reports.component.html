@@ -1,0 +1,53 @@
+<p class = "emptytext" *ngIf= "!showHeader">No reports to show</p>
+
+
+<table class="table  table-striped">
+  <thead>
+    <tr *ngIf= "showHeader">
+      <th>UserName</th>
+      <th>Date Approved</th>
+      <th>Reports</th>
+      <th *ngIf= "showActions">Edit</th>
+      <th>Status</th>
+      <th *ngIf= "showActions" >Click to approve</th>
+      <th *ngIf= "showActions" >Click to revoke</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of results" let i=index>
+      <td>{{result.username}}</td>
+      <td>{{result.date}}</td>
+      <td> {{result.report}}</td>
+
+      <td *ngIf= "showActions"> <a [routerLink]="['/edit-report/', result.id]">
+          <div class="function_div"><i style = " display: block;
+            width: 45%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3px;" class="fa fa-edit"></i></div>
+        </a></td>
+      <td> {{result.approved}}</td>
+      <td *ngIf= "showActions" (click)="Approve(result);"><i style = " display: block;
+        text-align: center;
+        padding: 3px;" class="fa fa-check-circle"></i>
+      </td>
+      <td *ngIf= "showActions" (click)="Revoke(result);"><i style = " display: block;
+       text-align: center;
+        padding: 3px;" class="fa fa-times-circle"></i>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<div class="login-item">
+     
+    <a class="link" routerLink="/home" routerLinkActive="active">
+        <div class="form-field">
+            <button class="button"> Return to Home</button>
+        </div>
+    </a>
+    
+  
+</div>

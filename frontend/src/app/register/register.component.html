@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="logo">Create a new account!</div>
+    <div class="register-item" >
+        <div *ngIf="offEmail.errors"> 
+            <div *ngIf="offEmail.errors.required && offEmail.touched"> 
+                Official Email required.
+            </div>			   
+            <div *ngIf="offEmail.errors.pattern"> 
+                Official Email not valid.
+            </div>	
+         </div> 
+         <div *ngIf="uname.errors?.required  && uname.touched"> 
+            Name required. 
+        </div>
+        <div *ngIf="uname.errors?.minlength"> 
+            Name must be at least 5 characters long.
+        </div>  
+
+        <div *ngIf="password.errors?.required  && password.touched"> 
+            Password required. 
+        </div>
+        <div *ngIf="password.errors?.minlength"> 
+            Password must be at least 5 characters long.
+        </div> 
+        <form style = "margin-top: 5%" #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
+
+            <div class="form-field" >
+                <label class="user" for="register-username"><span class="hidden">Name</span></label>
+                <input  
+                type="email" name="name" id="register-username" type="email" class="form-input" placeholder="Name" ngModel required minlength="5" #uname="ngModel"
+                    >
+            </div>
+            <div class="form-field">
+                <label class="mail" for="register-email"><span class="hidden">Email</span></label>
+                <input name="email" id="register-email" type="email" class="form-input" placeholder="Email" ngModel [pattern]="emailPattern" #offEmail="ngModel"
+                    required>
+            </div>
+
+            <div class="form-field">
+                <label class="lock" for="register-password"><span class="hidden">Password</span></label>
+                <input name="password" id="register-password" type="password" class="form-input" placeholder="Password" required minlength="5" #password="ngModel"
+                    ngModel required>
+            </div>
+           
+            <div class="form-field">
+                <input [disabled]="!myform.valid" type="submit" value="Register">
+            </div>
+            <div class="new-form-field">
+                <a routerLink="" routerLinkActive="active">
+                    <input type="submit" value="Go Back"> </a>
+            </div>
+        </form>
+        
+    </div>
+
+</div>
