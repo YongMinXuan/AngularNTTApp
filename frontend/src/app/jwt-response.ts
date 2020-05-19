@@ -5,6 +5,10 @@ export interface JwtResponse {
         email: string,
         access_token: string,
         expires_in: number,
-        
-    }
+        admin: string
+    },
+    access_token,
+    expires_in,
+    
+
 }

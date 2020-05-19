@@ -30,13 +30,11 @@ export class AuthService {
    
         console.log('res 7: ',expirein) 
         console.log('res 9: ',accesstoken)
-        if (res.errormessage == "Empty field") {
-          alert("Error in registering due to empty field")
-        }
-        else if (res.user) {
+       
+        if (res.user) {
           var expirein = res.expires_in.toString()
           var accesstoken = res.access_token 
-          localStorage.setItem("ACCESS_TOKEN", accesstoken);
+          localStorage.setItem("ACCESS_TOKEN", res.access_token);
           localStorage.setItem("EXPIRES_IN",expirein);
           localStorage.setItem("admin",res.user.admin);
           localStorage.setItem("userid",res.user.name);
@@ -51,13 +49,14 @@ export class AuthService {
     console.log('sign in user:',user)
     return this.httpClient.post(`${this.AUTH_SERVER}/login`, user).pipe(
       tap(async (res: JwtResponse) => {
+        console.log('res', res)
         var expirein = res.expires_in.toString()
         var accesstoken = res.access_token 
         console.log('res 23: ',expirein) 
         console.log('res 92: ',accesstoken)
         console.log('login res: ',res.user.admin)
         if (res.user) {
-          localStorage.setItem("ACCESS_TOKEN", accesstoken);
+          localStorage.setItem("ACCESS_TOKEN", res.access_token );
           localStorage.setItem("EXPIRES_IN",expirein);
           localStorage.setItem("admin",res.user.admin);
           localStorage.setItem("userid",res.user.name);
