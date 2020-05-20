@@ -221,13 +221,19 @@ router.post('/editreport', (req, res) => {
     console.log('look here: ', req.body)
     var id = req.body.id
     var text = req.body.reporttext
+    var timeforseconds = new Date
+    var seconds =  timeforseconds.getSeconds() < 10 ? '0' : '' + timeforseconds.getSeconds()
+    console.log('seconds:',seconds)
+    var currentSeconds = timeforseconds.getSeconds();
+    currentSeconds = ("0" + currentSeconds).slice(-2);
+    console.log('currentseconds:', currentSeconds)
     var d = new Date,
         dformat = [d.getFullYear(), d.getMonth() + 1,
         d.getDate(),
         ].join('-') + ' ' +
             [d.getHours(),
             d.getMinutes(),
-            d.getSeconds()].join(':');
+           currentSeconds+"" ].join(':');
     console.log('new date', dformat)
     database.all(`UPDATE reports SET report = ?, date = ? WHERE id = ?`, [text, dformat, id], (err, rows) => {
         console.log(err)
@@ -255,13 +261,17 @@ router.post('/approvereport', (req, res) => {
     console.log('look here: ', req.body)
     var id = req.body.id
     var boolean = 'Approved'
+    var timeforseconds = new Date
+    var currentSeconds = timeforseconds.getSeconds();
+    currentSeconds = ("0" + currentSeconds).slice(-2);
+    console.log('currentseconds:', currentSeconds)
     var d = new Date,
         dformat = [d.getFullYear(), d.getMonth() + 1,
         d.getDate(),
         ].join('-') + ' ' +
             [d.getHours(),
             d.getMinutes(),
-            d.getSeconds()].join(':');
+           currentSeconds+"" ].join(':');
     console.log('new date', dformat)
     database.all(`UPDATE reports SET approved = ?, date = ? WHERE id = ?`, [boolean, dformat, id], (err, rows) => {
         console.log(err)
@@ -289,14 +299,18 @@ router.post('/revokereport', (req, res) => {
     console.log('look here: ', req.body)
     var id = req.body.id
     var boolean = 'Not Approved'
+    var timeforseconds = new Date
+    var currentSeconds = timeforseconds.getSeconds();
+    currentSeconds = ("0" + currentSeconds).slice(-2);
+    console.log('currentseconds:', currentSeconds)
     var d = new Date,
         dformat = [d.getFullYear(), d.getMonth() + 1,
         d.getDate(),
         ].join('-') + ' ' +
             [d.getHours(),
             d.getMinutes(),
-            d.getSeconds()].join(':');
-    console.log('new date', dformat)
+           currentSeconds +"" ].join(':');
+    console.log('new date revoke', dformat)
     database.all(`UPDATE reports SET approved = ?, date = ? WHERE id = ?`, [boolean, dformat, id], (err, rows) => {
         console.log(err)
         console.log('edit reports')

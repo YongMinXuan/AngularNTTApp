@@ -11,7 +11,7 @@ import { FormGroup, FormControl,Validators,FormBuilder, } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; 
+  emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$"; 
   registerForm: FormGroup;
   unamePattern = "^$";  
   constructor(private _location: Location,private authService: AuthService, private router: Router,private formBuilder:FormBuilder) { }

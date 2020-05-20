@@ -54,15 +54,7 @@ export class ViewReportsComponent implements OnInit {
     
   }
 
-  // test(i){
-  //   console.log(i)
-  //   this.authService.editReport().subscribe((res)=>{
-  //     console.log('report:',res)
-  //     this.results = JSON.parse(res.ResultsfromSQL)
-  //     console.log('full results from server: ',this.results)
-     
-  //   });
-  // }
+
 
   Approve(i){
 

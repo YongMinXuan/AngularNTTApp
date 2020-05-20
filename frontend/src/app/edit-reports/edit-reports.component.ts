@@ -12,11 +12,11 @@ export class EditReportsComponent implements OnInit {
 
   constructor(private actRoute: ActivatedRoute,private authService: AuthService,private router: Router) {
     this.result_id = this.actRoute.snapshot.params.id;
-    console.log('id for editing:',this.result_id)
+    
    }
 
   ngOnInit(): void {
-    console.log('id for editing:',this.result_id)
+  
     var userid = localStorage.getItem('userid');
   
     console.log('user id: ',userid)
@@ -32,8 +32,7 @@ export class EditReportsComponent implements OnInit {
     form.value.id = this.result_id
     console.log('form: ', form.value)
     this.authService.editReport(form.value).subscribe((res)=>{
-      console.log('login user:',res)
-      console.log("Logged in!");
+
       
       this.router.navigateByUrl('view-report');
     }); 

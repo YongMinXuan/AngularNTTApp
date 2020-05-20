@@ -13,8 +13,7 @@ showActions: boolean = false
   ngOnInit(): void {
     var adminrights = localStorage.getItem('admin');
     var userid = localStorage.getItem('userid');
-    console.log('admin value',adminrights)
-    console.log('user id: ',userid)
+   
     if (adminrights == 'true'){
       this.showActions = true
     }
@@ -23,11 +22,7 @@ showActions: boolean = false
       this.router.navigateByUrl('');
     }
   }
-  submit(form){
-    console.log(form.value);
   
-
-  }
 
   logout(){
     this.authService.signOut()
