@@ -138,7 +138,7 @@ router.get('/viewnonAdminreport', (req, res) => {
     console.log('I reached here in view non admin report')
     console.log('look here: ', req.body)
 
-    database.all(`SELECT * FROM reports WHERE approved = ?`, ['Approved'], (err, rows) => {
+    database.all(`SELECT * FROM reports WHERE approved = ? ORDER BY date ASC`, ['Approved'], (err, rows) => {
         console.log(err)
         console.log('view reports')
         console.log(rows)
@@ -161,7 +161,7 @@ router.get('/viewreport', (req, res) => {
     console.log('I reached here in viewreport')
     console.log('look here: ', req.body)
 
-    database.all(`SELECT * FROM reports`, (err, rows) => {
+    database.all(`SELECT * FROM reports ORDER BY date ASC`, (err, rows) => {
         console.log(err)
         console.log('view reports')
         console.log(rows)
