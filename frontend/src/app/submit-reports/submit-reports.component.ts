@@ -30,19 +30,20 @@ export class SubmitReportsComponent implements OnInit {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     console.log('date: ', date)
-    var timeforseconds = new Date
-    var seconds =  timeforseconds.getSeconds() < 10 ? '0' : '' + timeforseconds.getSeconds()
-    console.log('seconds:',seconds)
-    var currentSeconds = timeforseconds.getSeconds();
-    var secondsforsubmission = ("0" + currentSeconds).slice(-2);
-    console.log('currentseconds:', secondsforsubmission)
+    var time = new Date
+   
+    var currentSecond = time.getSeconds();
+    var currentSeconds = ("0" + currentSecond).slice(-2);
+    var currentminute = time.getMinutes();
+    var currentminutes = ("0" + currentminute).slice(-2);
+    console.log('currentseconds:', currentSeconds)
     var d = new Date,
         dformat = [d.getFullYear(), d.getMonth() + 1,
         d.getDate(),
         ].join('-') + ' ' +
             [d.getHours(),
-            d.getMinutes(),
-            secondsforsubmission+"" ].join(':');
+            currentminutes,
+           currentSeconds+"" ].join(':');
     console.log('new date',dformat)
     form.value.date = dformat
     form.value.userid = userid
